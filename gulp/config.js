@@ -61,12 +61,14 @@ module.exports = {
       // See https://github.com/greypants/gulp-starter/issues/87 for note about
       // why this is 'backbone/node_modules/underscore' and not 'underscore'
     }, {
-      entries: src + '/javascript/page.js',
-      dest: dest,
-      outputName: 'page.js',
-      // list of externally available modules to exclude from the bundle
-      external: ['jquery', 'underscore']
-    }]
+      outputName: 'react_app.js',
+      entries: './src/javascript/react_app.cjsx',
+      dest: './build',
+      extensions: ['.coffee', '.hbs', '.js', '.cjsx'],
+      require: ['jquery'],
+      // defining transforms here will avoid crashing your stream
+      transform: ['coffee-reactify']
+    }],
   },
   production: {
     cssSrc: dest + '/*.css',
